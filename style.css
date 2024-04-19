@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-card: #ffff;
+    --color-sidebar: #1d1c3b;
+    --color-BG: #e0e0e0;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+}
+.container {
+    position: relative;
+    min-width: 100vh;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 60px 1fr;
+}
+
+
+.navbar {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: var(--color-card);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#btnon,
+#btnoff {
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    display: none;
+}
+
+.profile {
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    background-color: var(--color-sidebar);
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+#btnoff {
+    color: var(--color-card);
+    display: none;
+}
+
+.logo {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: var(--color-card);
+    font-weight: 500;
+}
+
+main {
+    background-color: var(--color-BG);
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 1rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+        "card1 card2 card3"
+        "card4 card4 card5"
+        "card4 card4 card5"
+        "card6 card6 card6";
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card1,
+.card2,
+.card3,
+.card4,
+.card5,
+.card6 {
+    background-color: var(--color-card);
+    border-radius: 5px;
+}
+
+/* medidas para tabletas */
+@media(max-width:991.98px) {
+    .sidebar {
+        position: absolute;
+        width: 300px;
+        height: 100vh;
+        left: -100%;
+        top: 0;
+    }
+    .sidebar.active {
+        left: 0;
+    }
+    #btnoff {
+        display: block;
+    }
+    #btnon {
+        display: block;
+    }
+    .navbar {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        justify-content: space-between;
+    }
+    main {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+        padding: 1rem;
+    }
+}
